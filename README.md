@@ -6,7 +6,6 @@ withdraw money, based on the Bank system.
 ATM GUI consists of the following Funtionalities:
 - Withdraws Money from *Chequing* and *Saving account*.
 - Deposites Money in *Chequing* and *Saving account*.
-- Handles *Credit account*.
 - Saves user's data for future use using *File Management*.
 
 <div align="center">
