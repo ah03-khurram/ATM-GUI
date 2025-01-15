@@ -248,5 +248,11 @@ public class ATM
         contentPane.add(flow1, BorderLayout.CENTER);
         frame.pack();
         frame.setVisible(true);
-    }    
+    }
+    
+    public static void main(String[] args)
+    {
+        new ATM(args[0]);
+    }
 }
+

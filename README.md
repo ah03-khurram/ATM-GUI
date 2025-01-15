@@ -1,74 +1,75 @@
-## **Overview:**
-ATM GUI that allows users to list accounts, deposit money, and
-withdraw money, based on the Bank system.
+# ATM GUI
 
-# ***Funtionalities of ATM:***
-ATM GUI consists of the following Funtionalities:
-- Withdraws Money from *Chequing* and *Saving account*.
-- Deposites Money in *Chequing* and *Saving account*.
-- Saves user's data for future use using *File Management*.
+## Overview
+This project is an ATM GUI that allows users to list accounts, deposit money, and withdraw money, based on the Bank system. The ATM GUI supports both Chequing and Saving accounts and includes file management to save and load user data.
 
-<div align="center">
-  <img src="https://github.com/ah03-khurram/ATM-GUI-COMP2001/assets/155772948/bc8bb45f-6cb2-4657-9a31-9fa18ed11ec7" width="1000"/>
-  <span style="color:red;">ATM GUI</span>
-</div>
+## Features
+### ATM Functionalities
+- **Withdraw Money**: Allows users to withdraw money from both Chequing and Saving accounts.
+- **Deposit Money**: Allows users to deposit money into both Chequing and Saving accounts.
+- **File Management**: Saves and loads user data for future use.
 
-## *Overview*:
-***Bank*** maintains two types of accounts for each customer: ***savings***, and ***chequing***. The savings account provides
-compound interest and withdrawal facility, while the chequing account offers a cheque book facility but no
-interest.
+### Account Types
+- **Chequing Account**: Offers a cheque book facility but no interest. Includes a minimum balance requirement and an over-limit charge.
+- **Saving Account**: Provides compound interest and a withdrawal facility. Includes a service fee for each withdrawal.
 
-# ***Account class:***
-- ## **Methods**:
-  - ### **Account()**:
-    - The default constructor that generates an account number using a random integer and initializes other member variables.
-  - ### **Account(String user)**:
-    - The overloaded constructor that takes the argument for the account name and initializes other member variables.
-  - ### **void display()**:
-    - Displays (print) the account information.
-  - ### **void deposit(float m)**:
-    - Accepts a deposit from a customer and updates the balance.
-  - ### **withdraw(float m)**:
-    - Defines an abstract method that can be overridden by the derived class and enables late dynamic calling of corresponding member functions in the derived classes
-  - ### **float getBalance()**:
-    - returns the balance.
-  - ### **String getUserName()**:
-    - returns the user name.
+### Bank Class
+- Maintains a list of accounts (both Chequing and Saving) for each customer.
+- Displays bank information and account details.
 
----
+## How to Use the ATM
+1. **Run the ATM Application**: Execute the `ATM` class with the user's name as an argument.
+   ```sh
+   java ATM "User Name"
+   ```
+2. **ATM Interface**: The ATM GUI will open, displaying the user's accounts.
+3. **Menu Options**:
+  - **Accounts**:
+    - **All Accounts**: Lists all accounts for the user.
+    - **Chequing**: Lists only Chequing accounts.
+    - **Saving**: Lists only Saving accounts.
+  - **File**:
+    - **Open**: Opens a saved bank file.
+    - **Save**: Saves the current bank data to a file.
+  - **Help**:
+    - **About**: Displays information about the user and the bank.
 
-## **Two derived classes from the Account class**:
-*Cheque* and *Saving*. In the Cheque class, private
-static final member variables minimBalance and overLimitCharge (set to 1000 and 5, respectively). In the
-Saving class, a private static final member variable called eachTimeCharge (set to 3.9) stores the
-service rate for each time a withdrawal is made.
+## Classes and Methods
+### Account Class
+  - **Methods**:
+    - **Account()**: The default constructor that generates an account number using a random integer and initializes other member variables.
+    - **Account(String user)**: The overloaded constructor that takes the argument for the account name and initializes other member variables.
+    - **void display()**: Displays (prints) the account information.
+    - **void deposit(float m)**: Accepts a deposit from a customer and updates the balance.
+    - **void withdraw(float m)**: Withdraws an amount of money from the account.
+    - **float getBalance()**: Returns the balance.
+    - **String getUsername()**: Returns the username.
+    - **int getAccountNo()**: Returns the account number.
 
-# ***Cheque class:***
-The Cheque class have the following member functions:
-- Two constructors similar to those of the parent class Account.
-- A withdraw function that withdraws money according to the user's request. This function, checks if this
-withdrawal is allowed according to the available balance and withdraw limit for each time. Calculates the over-limit service fee if the balance is lower than a limit when applying a withdrawal. Updates the balance.
+### Cheque Class
+  - **Methods**:
+    - **Cheque()**: Default constructor.
+    - **Cheque(String user)**: Constructor with a username argument.
+    - **void withdraw(float m)**: Withdraws money according to the user's request, applying over-limit charges if necessary.
 
-# ***Saving  class:***
-The Saving class have the following member functions:
-- Two constructors similar to those of the parent class Account.
-- A withdraw function that withdraws money according to the user's request. This function, checks if this withdrawal is allowed according to the available balance for each time. Applies a service fee for each time a withdrawal is made. Updates the balance.
+### Saving Class
+  - **Methods**:
+    - **Saving()**: Default constructor.
+    - **Saving(String user)**: Constructor with a username argument.
+    - **void withdraw(float m)**: Withdraws money according to the user's request, applying a service fee for each withdrawal.
 
----
+### Bank Class
+  - **Methods**:
+    - **Bank()**: Default constructor that creates a new empty account list.
+    - **Bank(String name)**: Constructor with a string argument for the bank name.
+    - **void add(Account a)**: Adds an account (either Saving or Cheque).
+    - **void display()**: Displays the bank name and the full list of accounts.
+    - **void display(String user)**: Displays the bank name and the list of accounts for a specific user.
 
-# ***Bank class:***
-## *Overview*:
-Bank class maintains the accounts, which has members bankName and an ArrayList accounts that
-store chequing and saving accounts. The Bank class have the following member functions:
+### FileManager Class
+  - **Methods**:
+    - **static Bank read(String filename)**: Reads a bank object from a file.
+    - **static void write(String filename, Bank bank)**: Writes a bank object to a file.
 
-- ## **Methods**:
-  - ### **Bank()**:
-    - The default constructor that creates a new empty account list (using ArrayList).
-  - ### **Bank(String name)**:
-    - A constructor with a string argument for the bank name.
-  - ### **void add(Account a)**:
-    - Adds the account (either Saving or Cheque objects).
-  - ### **void display()**:
-    - Displays the bank name and the full list of accounts (including the user’s name, balance, and the type of account (whether it is Saving or not)).
-  - ### **display(String user)**:
-    - Displays the bank name and the list of accounts of a specific user name (including the user’s name, balance, and the type of account (whether it is Saving or not)).
+## Screenshot
+<div align="center"> <img src="https://github.com/ah03-khurram/ATM-GUI-COMP2001/assets/155772948/bc8bb45f-6cb2-4657-9a31-9fa18ed11ec7" width="1000"/> <span style="color:red;">ATM GUI</span> </div>
